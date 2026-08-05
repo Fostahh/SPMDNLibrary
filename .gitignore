@@ -1,3 +1,9 @@
+### macOS
+# .DS_Store was previously tracked here and blocked the publish preflight's
+# clean-tree check. Keep it ignored.
+.DS_Store
+._*
+
+### Swift Package Manager
 .build
-.git
 .swiftpm
