@@ -12,8 +12,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "DNLibrary",
-            url: "https://github.com/Fostahh/SPMDNLibrary/releases/download/0.2.0/DNLibrary.zip",
-            checksum: "ba0433ee949954f20013a996969523b92509a19120cc26dac90dacf962d08b30"
+            url: "https://github.com/Fostahh/SPMDNLibrary/releases/download/0.3.0/DNLibrary.zip",
+            checksum: "7591ad9c34d544d070ad9dc7fbdfb9249ee013b97454c26a207be6eccd57502b"
         )
     ]
 )
