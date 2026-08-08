@@ -28,6 +28,14 @@ against the local package (`ios/DNLibraryLocal`) and has never pinned a remote v
 URL and checksum, creates the tag, and creates the release. Until then, treat this repository as
 not yet published rather than as broken.
 
+> **Source of truth.** For *what was asked for*, the umbrella repo's `docs/requirements/` wins — over the code, over any other
+> document, over a commit message. Where no requirement exists, **the ticket is the source of truth**
+> and its `## Rationale` carries the why.
+>
+> This governs **intent**, not facts. For *what the code does today*, believe the code. When intent
+> and implementation disagree, the implementation is what is wrong: record the correction in the
+> **ticket**, never by editing the requirement.
+
 ## ⚠️ Do not edit `Package.swift` by hand
 
 It is rewritten from end to end by `DNLibrary/scripts/publish-spm.sh` on every release — the binary
