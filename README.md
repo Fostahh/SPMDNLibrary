@@ -8,25 +8,23 @@ This repository contains **one generated file**. There is no source code here, a
 here.
 
 ```swift
-.package(url: "https://github.com/Fostahh/SPMDNLibrary.git", from: "1.0.0")
+.package(url: "https://github.com/Fostahh/SPMDNLibrary.git", .upToNextMajor(from: "0.10.1"))
 ```
 
-## ⚠️ This package does not currently resolve
+## This package resolves
 
-Verified 2026-08-06:
+Every published version is a git tag with a matching GitHub release, and the binary target in
+`Package.swift` points at that release's `DNLibrary.zip` with its generated checksum.
 
-- **The repository has no tags.** SPM resolves a version requirement by git tag, so *any*
-  `from:` / `exact:` requirement fails to resolve — there is nothing to match.
-- **There are no GitHub releases**, and the binary target's URL —
-  `releases/download/1.4.0/DNLibrary.zip` — returns **404**.
+**The app pins by range rather than exactly** (DN-030): `upToNextMajor` from a floor, which SPM
+reads as `>= floor, < 1.0.0`. A release therefore needs no edit to the app's project file — *Update
+to Latest Package Versions* is the whole repin — and `1.0.0` is reserved for the App Store release,
+a bound the resolver enforces rather than one to remember.
 
-`Package.swift` is left over from before the current release process existed; the `1.4.0` it names
-was never published under it. Nothing is broken by this today, because the app has always built
-against the local package (`ios/DNLibraryLocal`) and has never pinned a remote version.
-
-**The first `publish-spm.sh publish` fixes it in one step** — it rewrites the manifest with a real
-URL and checksum, creates the tag, and creates the release. Until then, treat this repository as
-not yet published rather than as broken.
+**The floor in the snippet above is not the current version, and no current version is written
+anywhere in this file** (DN-029 — a number here is stale at the next release). The floor is the
+first version carrying API the app actually calls, so it moves only when new API lands, not on
+every release. The tag list on this repository is derived and always correct; read it there.
 
 > **Source of truth.** For *what was asked for*, the umbrella repo's `docs/requirements/` wins — over the code, over any other
 > document, over a commit message. Where no requirement exists, **the ticket is the source of truth**
