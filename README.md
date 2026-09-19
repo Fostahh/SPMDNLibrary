@@ -8,7 +8,7 @@ This repository contains **one generated file**. There is no source code here, a
 here.
 
 ```swift
-.package(url: "https://github.com/Fostahh/SPMDNLibrary.git", .upToNextMajor(from: "0.10.1"))
+.package(url: "https://github.com/Fostahh/SPMDNLibrary.git", .upToNextMajor(from: "0.1.0"))
 ```
 
 ## This package resolves
@@ -21,10 +21,15 @@ reads as `>= floor, < 1.0.0`. A release therefore needs no edit to the app's pro
 to Latest Package Versions* is the whole repin — and `1.0.0` is reserved for the App Store release,
 a bound the resolver enforces rather than one to remember.
 
-**The floor in the snippet above is not the current version, and no current version is written
-anywhere in this file** (DN-029 — a number here is stale at the next release). The floor is the
-first version carrying API the app actually calls, so it moves only when new API lands, not on
-every release. The tag list on this repository is derived and always correct; read it there.
+**The floor in the snippet above is `0.1.0` on purpose — the first release, chosen so it can
+never be mistaken for a current number.** DN-053's fix to this same snippet used `0.10.1`, the
+version current at the time, and it read as current for exactly one release before aging like any
+other hard-coded number (DN-029). A floor that is visibly the oldest possible one cannot repeat that.
+
+**No current version is written anywhere in this file.** The floor a real consumer needs is the
+first version carrying the API it calls, which for `ios/DapurNaura` is read from
+`project.pbxproj`, not from here. The tag list on this repository is derived and always correct;
+read it there.
 
 > **Source of truth.** For *what was asked for*, the umbrella repo's `docs/requirements/` wins — over the code, over any other
 > document, over a commit message. Where no requirement exists, **the ticket is the source of truth**
